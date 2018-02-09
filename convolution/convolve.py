@@ -22,15 +22,22 @@ iLength = 10000
 jLength = iLength
 image = np.random.random((iLength, jLength))
 
-size = 11#1
+size = 111
 ker = astroconv.Gaussian2DKernel(20,x_size=size,y_size=size)
 #ker = np.random.random((iLength+1, jLength+1))
 
+#image[50, 50] = np.nan
+
 #smoothed = scisig.fftconvolve(image, ker)#.array, mode='same')
 #smoothed = astroconv.convolve_fft(image, ker, allow_huge=True)#, boundary='wrap')
-#image[50, 50] = np.nan
+
 #smoothed = sciconv.convolve(image, ker.array, mode='reflect')
-astroconv.convolve(image, ker, boundary=None, nan_treatment='interpolate')
+
+#conv = np.empty([iLength, jLength], dtype=np.float64)
+#conv = np.random.random((iLength, jLength))
+
+
+astroconv.convolve(image, ker, boundary=None, nan_treatment='interpolate', normalize_kernel=True)
 
 
 #smoothed = sciconv.convolve(image, ker)
