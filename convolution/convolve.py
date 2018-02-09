@@ -5,7 +5,7 @@
 #astropy = importlib.util.module_from_spec(spec)
 #spec.loader.exec_module(astropy)
 import sys
-sys.path.insert(0, '/Users/jnoss/dev/astropy/build/lib.macosx-10.6-x86_64-3.5/')
+sys.path.insert(0, '/Users/jamienoss/dev/astropy/build/lib.macosx-10.7-x86_64-3.6/')
 import astropy
 print(astropy.version)
 
@@ -22,7 +22,7 @@ iLength = 10000
 jLength = iLength
 image = np.random.random((iLength, jLength))
 
-size = 111
+size = 11
 ker = astroconv.Gaussian2DKernel(20,x_size=size,y_size=size)
 #ker = np.random.random((iLength+1, jLength+1))
 
@@ -37,7 +37,7 @@ ker = astroconv.Gaussian2DKernel(20,x_size=size,y_size=size)
 #conv = np.random.random((iLength, jLength))
 
 
-astroconv.convolve(image, ker, boundary=None, nan_treatment='interpolate', normalize_kernel=True)
+astroconv.convolve_dev(image, ker, boundary=None, nan_treatment='interpolate', normalize_kernel=False)
 
 
 #smoothed = sciconv.convolve(image, ker)
