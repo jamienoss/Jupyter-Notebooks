@@ -5,24 +5,24 @@
 #astropy = importlib.util.module_from_spec(spec)
 #spec.loader.exec_module(astropy)
 import sys
-sys.path.insert(0, '/Users/jamienoss/dev/astropy/build/lib.macosx-10.7-x86_64-3.6/')
+sys.path.insert(0, '/Users/jnoss/dev/astropy/build/lib.macosx-10.7-x86_64-3.6')
 import astropy
 print(astropy.version)
 
 import astropy.convolution as astroconv
-import scipy.ndimage.filters as sciconv
-import scipy.signal as scisig
+#import scipy.ndimage.filters as sciconv
+#import scipy.signal as scisig
 #from scipy.ndimage.filters import convolve
 import numpy as np
-import gc
-import time
+#import gc
+#import time
 #import gputools
 
 iLength = 10000
 jLength = iLength
 image = np.random.random((iLength, jLength))
 
-size = 11
+size = 111
 ker = astroconv.Gaussian2DKernel(20,x_size=size,y_size=size)
 #ker = np.random.random((iLength+1, jLength+1))
 
@@ -37,7 +37,7 @@ ker = astroconv.Gaussian2DKernel(20,x_size=size,y_size=size)
 #conv = np.random.random((iLength, jLength))
 
 
-astroconv.convolve_dev(image, ker, boundary=None, nan_treatment='interpolate', normalize_kernel=False)
+astroconv.convolve(image, ker, boundary='wrap')#, n_threads=0)
 
 
 #smoothed = sciconv.convolve(image, ker)
